@@ -118,29 +118,30 @@ export default function Home() {
         transition={{ duration: 0.6 }}
         className="w-full bg-gradient-to-br from-white via-sky-50 to-sky-100 py-16"
         >
-        <div className="max-w-4xl mx-auto px-6 text-justify space-y-6">
-            <h2 className="text-3xl font-bold text-sky-600 text-center">About Me</h2>
-            <div className="text-base leading-relaxed text-gray-700 dark:text-gray-300 space-y-4">
-            <p>
-                I am a passionate and adaptable IT professional currently working at <strong>RCTI+</strong>,
-                where I manage and develop the RCTI+ application across Web Desktop (WebD) and Web Mobile (WebM) platforms.
-                The application serves multiple content pillars and handles up to 2 million viewers, requiring high scalability, performance, and stability.
-            </p>
-            <p>
-                My technical expertise includes modern frontend and backend technologies such as <strong>React.js</strong>, <strong>Next.js</strong>,
-                <strong>TypeScript</strong>, and <strong>Golang</strong>, enabling me to build efficient, modular, and maintainable systems.
-                My background also includes experience with core web standards and backend development, supported by solid knowledge of
-                JavaScript (ES6+), TypeScript, PHP, and Java, as well as MySQL, PostgreSQL, and Oracle for database management.
-            </p>
-            <p>
-                In addition to hands-on development, I bring value through my background in <strong>Information Systems and IT Management</strong>,
-                with proven skills in business analysis, system analysis, and solution design.
-                I am also known for my ability to communicate effectively and collaborate well within a team, which helps ensure smooth project execution and shared success.
-            </p>
-            </div>
-
-            <ImageHoverGallery/>
+      <div className="max-w-4xl mx-auto px-6 text-justify space-y-6">
+        <h2 className="text-3xl font-bold text-sky-600 text-center">About Me</h2>
+        <div className="text-base leading-relaxed text-gray-700 dark:text-gray-300 space-y-4">
+          <p>
+            I am a passionate and adaptable IT professional currently working at <strong>RCTI+</strong>,
+            where I manage and develop the RCTI+ application across Web Desktop (WebD) and Web Mobile (WebM) platforms.
+            The application serves multiple content pillars and handles up to 2 million viewers, requiring high scalability, performance, and stability.
+          </p>
+          <p>
+            My technical expertise includes modern frontend and backend technologies such as <strong>React.js</strong>, <strong>Next.js</strong>,
+            <strong>TypeScript</strong>, and <strong>Golang</strong>, enabling me to build efficient, modular, and maintainable systems.
+            My background also includes experience with core web standards and backend development, supported by solid knowledge of
+            JavaScript (ES6+), TypeScript, PHP, and Java, as well as MySQL, PostgreSQL, and Oracle for database management.
+          </p>
+          <p>
+            In addition to hands-on development, I bring value through my background in <strong>Information Systems and IT Management</strong>,
+            with proven skills in business analysis, system analysis, and solution design.
+            I am also known for my ability to communicate effectively and collaborate well within a team, which helps ensure smooth project execution and shared success.
+          </p>
         </div>
+
+        <ImageHoverGallery />
+      </div>
+
       </motion.section>
 
       <motion.section id="experience" className="relative py-8 px-4 sm:px-8">
