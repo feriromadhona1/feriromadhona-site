@@ -1,0 +1,93 @@
+.status {
+  background-color: red;
+}
+
+.active {
+  background-color: #0079FF;
+  color: #FCFCFC;
+}
+
+.fasttrack {
+  background-color: #3A3A3C;
+  color: #FCFCFC;
+}
+
+.open {
+  background-color: #3A3A3C;
+  color: #FCFCFC;
+}
+
+.close {
+  background-color: #1D1D1E;
+  color: #646464;
+}
+
+.r_button_size_xs {
+  height: 34px;
+  width: 93px;
+  font-size: 14px;
+}
+
+.r_button_size_sm {
+  height: 45px;
+  width: 99px;
+  font-size: 16px;
+}
+
+.r_button_size_md {
+  height: 40px;
+  width: 126px;
+  font-size: 18px;
+}
+
+.r_button_size_lg {
+  height: 48px;
+  width: 134px;
+  font-size: 20px;
+}
+
+.r_button_type_primary {
+  background: #0079FF;
+  border: none;
+  color: #f4f4f4;
+}
+
+.r_button_type_primary_outline {
+  background: transparent;
+  border: solid 2px #0079FF;
+  color: #0079FF;
+}
+
+.r_button_type_gray {
+  background: #D8D8D8;
+  border: none;
+  color: #646464
+}
+
+.r_button_type_gray_outline {
+  background: transparent;
+  border: solid 2px #FFF;
+  color: #FFF;
+}
+
+.r_button_type_red {
+  background: #FA262F;
+  border: none;
+  color: #f4f4f4;
+}
+
+.r_button_type_red_outline {
+  background: transparent;
+  border: solid 2px #FA262F;
+  color: #FA262F;
+}
+
+.r_button_type_transparent_primary {
+  background: transparent;
+  color: #0079FF;
+}
+
+.r_button_type_transparent_red {
+  background: transparent;
+  color: #FA262F;
+}
