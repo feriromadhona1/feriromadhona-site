@@ -1,5 +1,5 @@
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Navbar from "../Navbar/index";
@@ -200,7 +200,7 @@ export default function Home() {
               <div className="card-inner relative h-80 w-full transition-transform duration-700 [transform-style:preserve-3d]">
                 {/* Front Side */}
                 <div className="absolute inset-0 bg-white rounded-xl shadow-md pt-10 px-4 pb-4 backface-hidden">
-                  <img 
+                  <Image 
                     src={
                       idx === 0 ? "/assets/images/rctiplus.png" :
                       idx === 1 ? "/assets/images/epjlp.png" :
@@ -208,6 +208,8 @@ export default function Home() {
                     }
                     alt={title}
                     className="w-full h-40 object-cover rounded-md mb-2"
+                    width={200} 
+                    height={100}
                   />
                   <h3 className="text-lg font-semibold">{title}</h3>
                   <p className="text-sm">
@@ -269,10 +271,12 @@ export default function Home() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className={`rounded-2xl bg-white p-6 flex flex-col md:flex-row items-center gap-4 shadow-md`}
             >
-              <img
+              <Image
                 src={t.avatar}
                 alt={t.name}
                 className="w-16 h-16 rounded-full object-cover border-2 border-white shadow"
+                width={300} 
+                height={300}
               />
               <div className="text-center md:text-left">
                 <p className="text-gray-800 italic">"{t.message}"</p>
