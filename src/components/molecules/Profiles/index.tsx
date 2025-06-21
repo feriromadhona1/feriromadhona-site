@@ -98,7 +98,7 @@ export default function Home() {
         >
         <div className="w-[200px] h-[200px] mx-auto rounded-full overflow-hidden shadow-md">
             <Image
-            src={`${basePath}/assets/images/feri-romadhona.jpg`} {/* <-- DITAMBAHKAN BASEPATH */}
+            src={`${basePath}/assets/images/feri-romadhona.jpg`}
             alt="Feri Romadhona"
             width={200}
             height={200}
