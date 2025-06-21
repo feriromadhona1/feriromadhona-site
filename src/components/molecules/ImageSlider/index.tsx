@@ -5,6 +5,8 @@ import { useState } from 'react'
 import Image from 'next/image'
 import ImageSliderButton from '@/components/atoms/ImageSliderButton/index'
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 const sliderImages = ['slide1.jpg', 'slide2.jpg', 'slide3.jpg']
 
 export default function ImageSlider() {
