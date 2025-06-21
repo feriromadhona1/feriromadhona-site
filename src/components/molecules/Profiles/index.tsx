@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -19,6 +18,10 @@ import {
   SiGo,
   SiJenkins,
 } from "react-icons/si";
+
+// Dapatkan basePath dari variabel lingkungan.
+// Jika tidak ada (misalnya saat development lokal), gunakan string kosong.
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 
 export default function Home() {
@@ -62,21 +65,21 @@ export default function Home() {
       role: "Backend Developer at RCTI+",
       message:
         "Working with Feri has been a delightful experience. He adapts quickly, pays great attention to detail, and consistently shows strong initiative.",
-      avatar: "/assets/images/alfan.png",
+      avatar: `${basePath}/assets/images/alfan.png`, // <-- DITAMBAHKAN BASEPATH
     },
     {
       name: "Sukmo Wismantoro",
       role: "Kepala Satuan Pelaksana Sistem Informasi Dinas PPKUKM DKI Jakarta",
       message:
         "Feri selalu memberikan solusi tepat waktu dan efisien. Komunikasinya sangat jelas, membuat kerja tim berjalan lancar.",
-      avatar: "/assets/images/sukmo.png",
+      avatar: `${basePath}/assets/images/sukmo.png`, // <-- DITAMBAHKAN BASEPATH
     },
     {
       name: "Dimas Prasetyo",
       role: "Frontend Engineer at Danamon",
       message:
         "Selain teknikal yang kuat, Feri juga punya jiwa kolaboratif tinggi. Sangat direkomendasikan untuk project besar.",
-      avatar: "/images/dimas.jpg",
+      avatar: `${basePath}/images/dimas.jpg`, // <-- DITAMBAHKAN BASEPATH (cek path aslinya `/images/dimas.jpg` atau `/assets/images/dimas.jpg`)
     },
   ];
 
@@ -95,7 +98,7 @@ export default function Home() {
         >
         <div className="w-[200px] h-[200px] mx-auto rounded-full overflow-hidden shadow-md">
             <Image
-            src="/assets/images/feri-romadhona.jpg"
+            src={`${basePath}/assets/images/feri-romadhona.jpg`} {/* <-- DITAMBAHKAN BASEPATH */}
             alt="Feri Romadhona"
             width={200}
             height={200}
@@ -174,9 +177,6 @@ export default function Home() {
       </motion.section>
 
 
-
-
-
       {/* Portfolio Section */}
       <motion.section
         id="portfolio"
@@ -201,15 +201,15 @@ export default function Home() {
               <div className="card-inner relative h-80 w-full transition-transform duration-700 [transform-style:preserve-3d]">
                 {/* Front Side */}
                 <div className="absolute inset-0 bg-white rounded-xl shadow-md pt-10 px-4 pb-4 backface-hidden">
-                  <Image 
+                  <Image
                     src={
-                      idx === 0 ? "/assets/images/rctiplus.png" :
-                      idx === 1 ? "/assets/images/epjlp.png" :
-                      "/assets/images/short-series.png"
+                      idx === 0 ? `${basePath}/assets/images/rctiplus.png` : // <-- DITAMBAHKAN BASEPATH
+                      idx === 1 ? `${basePath}/assets/images/epjlp.png` :    // <-- DITAMBAHKAN BASEPATH
+                      `${basePath}/assets/images/short-series.png`           // <-- DITAMBAHKAN BASEPATH
                     }
                     alt={title}
                     className="w-full h-40 object-cover rounded-md mb-2"
-                    width={200} 
+                    width={200}
                     height={100}
                   />
                   <h3 className="text-lg font-semibold">{title}</h3>
@@ -276,7 +276,7 @@ export default function Home() {
                 src={t.avatar}
                 alt={t.name}
                 className="w-16 h-16 rounded-full object-cover border-2 border-white shadow"
-                width={300} 
+                width={300}
                 height={300}
               />
               <div className="text-center md:text-left">
