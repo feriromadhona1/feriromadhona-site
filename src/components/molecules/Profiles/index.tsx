@@ -267,7 +267,7 @@ export default function Home() {
               initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`rounded-2xl ${t.bg} p-6 flex flex-col md:flex-row items-center gap-4 shadow-md`}
+              className={`rounded-2xl bg-white p-6 flex flex-col md:flex-row items-center gap-4 shadow-md`}
             >
               <img
                 src={t.avatar}
