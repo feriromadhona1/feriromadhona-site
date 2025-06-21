@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   },
   basePath: "/FERI-PORTOFOLIO",
   assetPrefix: "/FERI-PORTOFOLIO/",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: '/FERI-PORTOFOLIO',
+  },
 };
 
 export default nextConfig;
