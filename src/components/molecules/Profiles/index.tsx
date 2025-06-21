@@ -280,7 +280,7 @@ export default function Home() {
                 height={300}
               />
               <div className="text-center md:text-left">
-                <p className="text-gray-800 italic">"{t.message}"</p>
+                <p className="text-gray-800 italic">&quot;{t.message}&quot;</p>
                 <p className="font-semibold mt-2 text-sky-700">{t.name}</p>
                 <p className="text-sm text-gray-500">{t.role}</p>
               </div>
