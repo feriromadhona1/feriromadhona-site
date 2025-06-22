@@ -62,21 +62,21 @@ export default function Home() {
       role: "Backend Developer at RCTI+",
       message:
         "Working with Feri has been a delightful experience. He adapts quickly, pays great attention to detail, and consistently shows strong initiative.",
-      avatar: "/assets/images/alfan.png",
+      avatar: `${process.env.NEXT_PUBLIC_BASE_PATH}/assets/images/alfan.png`, 
     },
     {
       name: "Sukmo Wismantoro",
       role: "Kepala Satuan Pelaksana Sistem Informasi Dinas PPKUKM DKI Jakarta",
       message:
         "Feri selalu memberikan solusi tepat waktu dan efisien. Komunikasinya sangat jelas, membuat kerja tim berjalan lancar.",
-      avatar: "/assets/images/sukmo.png",
+      avatar: `${process.env.NEXT_PUBLIC_BASE_PATH}/assets/images/sukmo.png`,
     },
     {
       name: "Dimas Prasetyo",
       role: "Frontend Engineer at Danamon",
       message:
         "Selain teknikal yang kuat, Feri juga punya jiwa kolaboratif tinggi. Sangat direkomendasikan untuk project besar.",
-      avatar: "/images/dimas.jpg",
+      avatar: `${process.env.NEXT_PUBLIC_BASE_PATH}/images/dimas.jpg`,
     },
   ];
 
@@ -95,7 +95,7 @@ export default function Home() {
         >
         <div className="w-[200px] h-[200px] mx-auto rounded-full overflow-hidden shadow-md">
             <Image
-            src="/assets/images/feri-romadhona.jpg"
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/images/feri-romadhona.jpg`}
             alt="Feri Romadhona"
             width={200}
             height={200}
@@ -203,9 +203,9 @@ export default function Home() {
                 <div className="absolute inset-0 bg-white rounded-xl shadow-md pt-10 px-4 pb-4 backface-hidden">
                   <Image 
                     src={
-                      idx === 0 ? "/assets/images/rctiplus.png" :
-                      idx === 1 ? "/assets/images/epjlp.png" :
-                      "/assets/images/short-series.png"
+                      idx === 0 ? `${process.env.NEXT_PUBLIC_BASE_PATH}/assets/images/rctiplus.png` :
+                      idx === 1 ? `${process.env.NEXT_PUBLIC_BASE_PATH}/assets/images/epjlp.png` :
+                      `${process.env.NEXT_PUBLIC_BASE_PATH}/assets/images/short-series.png`
                     }
                     alt={title}
                     className="w-full h-40 object-cover rounded-md mb-2"

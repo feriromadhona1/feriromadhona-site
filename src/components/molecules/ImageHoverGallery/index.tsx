@@ -1,11 +1,10 @@
 import ImageHoverItem from "@/components/atoms/ImageHoverItem/index"
 
 const images = [
-  '/assets/images/feri-bola.jpg',
-  '/assets/images/feri-mentor.jpeg',
-  '/assets/images/feri-bola.jpg',
-//   '/assets/images/feri-mentor.jpeg',
-]
+  `${process.env.NEXT_PUBLIC_BASE_PATH}/assets/images/feri-bola.jpg`,
+  `${process.env.NEXT_PUBLIC_BASE_PATH}/assets/images/feri-mentor.jpeg`,
+  `${process.env.NEXT_PUBLIC_BASE_PATH}/assets/images/feri-bola.jpg`,
+];
 
 export default function ImageHoverGallery() {
   return (

@@ -6,9 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "next build && gh-pages -d out -b master"
+    "deploy": "next build && gh-pages -d out -b gh-pages"
   },
-  "homepage": "https://feriromadhona1.github.io",
+  "homepage": "https://feriromadhona1.github.io/feriromadhona-site",
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.18.1",
