@@ -7,10 +7,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/feriromadhona-site',
-  env: {
-    env: { NEXT_PUBLIC_BASE_PATH: '/feriromadhona-site', },
-  },
 };
 
 export default nextConfig;
