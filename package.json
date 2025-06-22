@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "npm run build && gh-pages -d out"
+    "deploy": "next build && gh-pages -d out -b master"
   },
   "homepage": "https://feriromadhona1.github.io/FERI-PORTOFOLIO",
   "dependencies": {
