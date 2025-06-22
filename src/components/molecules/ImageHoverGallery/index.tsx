@@ -1,12 +1,11 @@
-import ImageHoverItem from "@/components/atoms/ImageHoverItem/index";
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+import ImageHoverItem from "@/components/atoms/ImageHoverItem/index"
 
 const images = [
-  `${basePath}/assets/images/feri-bola.jpg`,
-  `${basePath}/assets/images/feri-mentor.jpeg`,
-  `${basePath}/assets/images/feri-bola.jpg`,
-//   `${basePath}/assets/images/feri-mentor.jpeg`, // Baris ini sudah dikomentari, saya biarkan
-];
+  '/assets/images/feri-bola.jpg',
+  '/assets/images/feri-mentor.jpeg',
+  '/assets/images/feri-bola.jpg',
+//   '/assets/images/feri-mentor.jpeg',
+]
 
 export default function ImageHoverGallery() {
   return (
@@ -18,5 +17,5 @@ export default function ImageHoverGallery() {
         ))}
       </div>
     </div>
-  );
+  )
 }

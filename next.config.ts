@@ -8,10 +8,10 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: "/FERI-PORTOFOLIO",
-  assetPrefix: "/FERI-PORTOFOLIO/",
+  // basePath: "/FERI-PORTOFOLIO",
+  // assetPrefix: "/FERI-PORTOFOLIO/",
   env: {
-    NEXT_PUBLIC_BASE_PATH: '/FERI-PORTOFOLIO',
+    NEXT_PUBLIC_BASE_PATH: '',
   },
 };
 

@@ -5,8 +5,6 @@ import { useState } from 'react'
 import Image from 'next/image'
 import ImageSliderButton from '@/components/atoms/ImageSliderButton/index'
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-
 const sliderImages = ['slide1.jpg', 'slide2.jpg', 'slide3.jpg']
 
 export default function ImageSlider() {
@@ -25,7 +23,7 @@ export default function ImageSlider() {
       <h3 className="text-xl font-semibold text-sky-600 mb-4 text-center">Gallery</h3>
       <div className="relative w-full max-w-2xl mx-auto overflow-hidden rounded-lg shadow-md">
         <Image
-          src={`${basePath}/assets/images/about-slider/${sliderImages[currentIndex]}`}
+          src={`/assets/images/about-slider/${sliderImages[currentIndex]}`}
           alt={`Slide ${currentIndex + 1}`}
           width={800}
           height={400}
