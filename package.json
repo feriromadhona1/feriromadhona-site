@@ -8,7 +8,7 @@
     "start": "next start",
     "deploy": "next build && gh-pages -d out -b master"
   },
-  "homepage": "https://feriromadhona1.github.io/FERI-PORTOFOLIO",
+  "homepage": "https://feriromadhona1.github.io",
   "dependencies": {
     "clsx": "^2.1.1",
     "framer-motion": "^12.18.1",
