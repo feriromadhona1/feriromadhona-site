@@ -17,7 +17,7 @@ const Profile = () => {
         <meta property="og:description" content="Portofolio resmi Feri Romadhona, seorang pengembang web profesional dan desainer UI/UX. Jelajahi proyek terbaru, keahlian, dan hubungi untuk kolaborasi." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://feriromadhona1.github.io/" />
-        <meta property="og:image" content="/assets/images/feri-romadhona.jpg" /> 
+        <meta property="og:image" content="https://feriromadhona1.github.io/assets/images/feri-romadhona.jpg" /> 
         <meta property="og:image:alt" content="Portofolio Feri Romadhona" />
         <meta property="og:locale" content="id_ID" />
 
@@ -27,7 +27,7 @@ const Profile = () => {
         <meta name="twitter:creator" content="@feriromadhona1>" /> 
         <meta name="twitter:title" content="Feri Romadhona - Portofolio Pengembang Web & Desainer UI/UX" />
         <meta name="twitter:description" content="Jelajahi portofolio Feri Romadhona, seorang pengembang web profesional dan desainer UI/UX. Lihat proyek dan keahliannya di sini!" />
-        <meta name="twitter:image" content="/assets/images/feri-romadhona.jpg" /> 
+        <meta name="twitter:image" content="https://feriromadhona1.github.io/assets/images/feri-romadhona.jpg" /> 
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/f.png" />
