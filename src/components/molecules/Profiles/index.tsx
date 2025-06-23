@@ -8,6 +8,8 @@ import ImageHoverGallery from "../ImageHoverGallery/index";
 import ExperienceItem from "../ExperienceItem/index";
 import ExperienceNav from "@/components/atoms/ExperienceNav/index";
 import { FaWhatsapp, FaLinkedin, FaGithub, FaInstagram, FaFacebook } from "react-icons/fa";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import {
   SiLaravel,
   SiReact,
@@ -58,6 +60,13 @@ export default function Home() {
 
   const testimonials = [
     {
+      name: "Sukmo Wismantoro",
+      role: "Kepala Satuan Pelaksana Sistem Informasi Dinas PPKUKM Provinsi DKI Jakarta",
+      message:
+        "Strong analytical skills and efficient in solving technical problems. Collaborative and a reliable team player. Multidisciplinary, punctual in completing tasks, and responsive to feedback.",
+      avatar: `/assets/images/sukmo.png`,
+    },
+    {
       name: "Alfan Junianto",
       role: "Backend Developer at RCTI+",
       message:
@@ -65,18 +74,11 @@ export default function Home() {
       avatar: `/assets/images/alfan.png`, 
     },
     {
-      name: "Sukmo Wismantoro",
-      role: "Kepala Satuan Pelaksana Sistem Informasi Dinas PPKUKM DKI Jakarta",
+      name: "Ibrahim",
+      role: "Fullstack Engineer at AIDO Health Indonesia ",
       message:
-        "Feri selalu memberikan solusi tepat waktu dan efisien. Komunikasinya sangat jelas, membuat kerja tim berjalan lancar.",
-      avatar: `/assets/images/sukmo.png`,
-    },
-    {
-      name: "Dimas Prasetyo",
-      role: "Frontend Engineer at Danamon",
-      message:
-        "Selain teknikal yang kuat, Feri juga punya jiwa kolaboratif tinggi. Sangat direkomendasikan untuk project besar.",
-      avatar: `/images/dimas.jpg`,
+        "During our time working together, I observed Feri strong eagerness to learn and his initiative in engaging in discussions to complete tasks effectively. I highly recommend Feri to be involved in larger-scale projects.",
+      avatar: `/assets/images/ibrahim.png`,
     },
   ];
 
@@ -103,9 +105,10 @@ export default function Home() {
             />
         </div>
         <h1 className="text-4xl font-bold text-sky-600">Feri Romadhona, S.Si</h1>
-        <p className="text-lg max-w-xl mx-auto">
-            Frontend Developer with a passion for crafting beautiful and functional web applications.
+        <p className="text-lg max-w-xl mx-auto text-gray-700 dark:text-gray-300">
+          Fullstack Developer with a strong background in building robust, scalable, and user-oriented web applications and backend systems.
         </p>
+
      </motion.section>
 
 
@@ -175,8 +178,6 @@ export default function Home() {
 
 
 
-
-
       {/* Portfolio Section */}
       <motion.section
         id="portfolio"
@@ -239,6 +240,18 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link href="/portfolio">
+            <button className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 via-sky-500 to-blue-600 text-white font-semibold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out">
+              See More
+              <ArrowRight
+                size={20}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </button>
+          </Link>
         </div>
 
         <style jsx>{`
