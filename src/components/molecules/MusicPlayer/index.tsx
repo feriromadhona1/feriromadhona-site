@@ -51,7 +51,9 @@ const MusicPlayer = forwardRef<MusicPlayerHandle, MusicPlayerProps>(
         });
       }
 
-      if (!isMobile()) startMinimizeTimer();
+    //   if (!isMobile()) startMinimizeTimer();
+
+      startMinimizeTimer();
 
       return () => {
         if (timerRef.current) clearTimeout(timerRef.current);
