@@ -216,8 +216,8 @@ export default function Home() {
                   <h3 className="text-lg font-semibold">{title}</h3>
                   <p className="text-sm">
                     {
-                      idx === 0 ? "Aplikasi katalog video berbasis Next.js + JWPlayer + Redux." :
-                      idx === 1 ? "Dashboard analytics real-time dengan integrasi APM Elastic." :
+                      idx === 0 ? "RCTI+ adalah platform streaming digital yang menghadirkan tayangan TV, film, sinetron, dan berita secara gratis dan eksklusif." :
+                      idx === 1 ? "Digitalisasi proses rekrutmen, pemantauan kontrak, hingga listing upah PJLP dengan antarmuka yang user-friendly dan terintegrasi." :
                       "Aplikasi katalog video berbasis Next.js + JWPlayer + Redux."
                     }
                   </p>
