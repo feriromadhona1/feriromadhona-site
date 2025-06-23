@@ -20,7 +20,6 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     if (autoPlay && audioRef.current) {
@@ -50,14 +49,12 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
 
   // Auto minimize after 10s
   const handleMouseLeave = () => {
-    setIsHovered(false);
     timeoutRef.current = setTimeout(() => {
       setIsMinimized(true);
     }, 10000); // 10s
   };
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
     setIsMinimized(false);
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
