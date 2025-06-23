@@ -51,7 +51,7 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setIsMinimized(true);
-    }, 5000); // 10s
+    }, 5000); 
   };
 
   const handleMouseEnter = () => {
