@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Navbar from "../Navbar/index";
@@ -29,6 +29,7 @@ export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [autoPlayMusic, setAutoPlayMusic] = useState(false);
+  const playerRef = useRef<{ play: () => void }>(null);
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
@@ -84,6 +85,11 @@ export default function Home() {
       avatar: `/assets/images/ibrahim.png`,
     },
   ];
+
+  const handleAccept = () => {
+    setAutoPlayMusic(true); // supaya tetap trigger UI
+    playerRef.current?.play(); // langsung play!
+  };
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-sky-50 text-gray-800 px-4 py-8 space-y-20 relative dark:from-gray-900 dark:to-gray-800 dark:text-white">
@@ -417,11 +423,11 @@ export default function Home() {
       </motion.section>
 
       <IntroMusicPopup
-        onAccept={() => setAutoPlayMusic(true)}
+        onAccept={handleAccept}
         onDecline={() => setAutoPlayMusic(false)}
       />
 
-      <MusicPlayer autoPlay={autoPlayMusic} />
+      <MusicPlayer ref={playerRef}  autoPlay={autoPlayMusic} />
 
       {/* Footer */}
       <footer className="text-center text-sm text-gray-500 pt-12 pb-4">

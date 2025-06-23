@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useImperativeHandle, forwardRef } from "react";
 import { Play, Pause, Music2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -17,7 +17,7 @@ interface MusicPlayerProps {
   autoPlay?: boolean;
 }
 
-export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
+const MusicPlayer = forwardRef(({ autoPlay = false }: MusicPlayerProps, ref: any) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,12 +25,25 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMobileDevice, setIsMobileDevice] = useState(false);
 
+  useImperativeHandle(ref, () => ({
+    play: () => {
+      if (audioRef.current) {
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+        });
+      }
+    },
+  }));
+
   useEffect(() => {
     setIsMobileDevice(isMobile());
 
     if (autoPlay && audioRef.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        // Autoplay gagal karena user gesture belum ada
+      });
     }
 
     if (!isMobile()) startMinimizeTimer();
@@ -40,7 +53,6 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
     };
   }, []);
 
-  // Jalankan timer lagi setelah dibesarkan
   useEffect(() => {
     if (!isMobileDevice && !isMinimized) {
       startMinimizeTimer();
@@ -77,15 +89,14 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
     if (!isMobileDevice) {
       if (timerRef.current) clearTimeout(timerRef.current);
       setIsMinimized(false);
+      startMinimizeTimer();
     }
-    startMinimizeTimer();
   };
 
   const handleMouseLeave = () => {
     if (!isMobileDevice) {
       startMinimizeTimer();
     }
-    startMinimizeTimer();
   };
 
   const handleMobileToggle = () => {
@@ -93,7 +104,6 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
       setIsMinimized((prev) => !prev);
     }
     startMinimizeTimer();
-
   };
 
   return (
@@ -180,4 +190,6 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
       </div>
     </motion.div>
   );
-}
+});
+
+export default MusicPlayer;
