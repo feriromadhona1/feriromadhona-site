@@ -21,11 +21,14 @@ import {
   SiGo,
   SiJenkins,
 } from "react-icons/si";
+import MusicPlayer from "../MusicPlayer/index";
+import IntroMusicPopup from "../IntroMusicPopup/index";
 
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [autoPlayMusic, setAutoPlayMusic] = useState(false);
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
@@ -360,6 +363,10 @@ export default function Home() {
           </button>
         </form>
 
+        <div>or</div>
+
+        
+
         <div className="flex justify-center gap-6 text-2xl text-sky-600">
           <a
             href="https://wa.me/6281317185602"
@@ -408,6 +415,13 @@ export default function Home() {
           </a>
         </div>
       </motion.section>
+
+      <IntroMusicPopup
+        onAccept={() => setAutoPlayMusic(true)}
+        onDecline={() => setAutoPlayMusic(false)}
+      />
+
+      <MusicPlayer autoPlay={autoPlayMusic} />
 
       {/* Footer */}
       <footer className="text-center text-sm text-gray-500 pt-12 pb-4">
