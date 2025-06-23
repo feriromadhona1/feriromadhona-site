@@ -96,12 +96,14 @@ const MusicPlayer = forwardRef<MusicPlayerHandle, MusicPlayerProps>(
         setIsMinimized(false);
         startMinimizeTimer();
       }
+      startMinimizeTimer();
     };
 
     const handleMouseLeave = () => {
       if (!isMobileDevice) {
         startMinimizeTimer();
       }
+      startMinimizeTimer();
     };
 
     const handleMobileToggle = () => {
