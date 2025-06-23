@@ -83,7 +83,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
       {showBurger && (
         <button
           onClick={handleBurgerToggle}
-          className="md:hidden fixed top-4 left-10 z-50 bg-white/80 dark:bg-gray-800/80 p-2 rounded-lg shadow-md backdrop-blur-md"
+          className="md:hidden fixed top-4 left-6 z-50 bg-white/80 dark:bg-gray-800/80 p-2 rounded-lg shadow-md backdrop-blur-md"
           aria-label="Open menu"
         >
           <Menu size={22} className="text-gray-800 dark:text-white" />

@@ -4,10 +4,14 @@ import { Play, Pause, Music2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const playlist = [
-  { title: "Light Chillhop Beat", src: "/assets/music/music2.mp3" },
   { title: "Cozy Crackle Nights", src: "/assets/music/music1.mp3" },
+  { title: "Light Chillhop Beat", src: "/assets/music/music2.mp3" },
   { title: "Ambient Chillhop", src: "/assets/music/music3.mp3" },
 ];
+
+function isMobile() {
+  return typeof window !== "undefined" && window.innerWidth <= 768;
+}
 
 interface MusicPlayerProps {
   autoPlay?: boolean;
@@ -15,18 +19,33 @@ interface MusicPlayerProps {
 
 export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    setIsMobileDevice(isMobile());
+
     if (autoPlay && audioRef.current) {
       audioRef.current.play();
       setIsPlaying(true);
     }
-  }, [autoPlay]);
+
+    startMinimizeTimer();
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
+
+  const startMinimizeTimer = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      setIsMinimized(true);
+    }, 5000);
+  };
 
   const togglePlay = () => {
     if (!audioRef.current) return;
@@ -47,17 +66,22 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
     }
   };
 
-  // Auto minimize after 10s
-  const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setIsMinimized(true);
-    }, 5000); 
+  const handleMouseEnter = () => {
+    if (!isMobileDevice) {
+      setIsMinimized(false);
+      if (timerRef.current) clearTimeout(timerRef.current);
+    }
   };
 
-  const handleMouseEnter = () => {
-    setIsMinimized(false);
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
+  const handleMouseLeave = () => {
+    if (!isMobileDevice) {
+      startMinimizeTimer();
+    }
+  };
+
+  const handleMobileToggle = () => {
+    if (isMobileDevice) {
+      setIsMinimized((prev) => !prev);
     }
   };
 
@@ -65,70 +89,68 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
     <motion.div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleMobileToggle}
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        scale: isMinimized ? 0.7 : 1,
+      }}
       transition={{ duration: 0.4 }}
-      className={`fixed bottom-6 right-6 z-50 ${
-        isMinimized
-          ? "w-32 h-12 p-2 bg-white dark:bg-gray-800 rounded-full shadow-md flex items-center justify-center border border-gray-200 dark:border-gray-700"
-          : "w-80 bg-white dark:bg-[#1f2937] border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl"
-      } transition-all duration-500`}
+      className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${
+        isMinimized ? "w-40 h-14" : "w-80"
+      } bg-white dark:bg-[#1f2937] border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl overflow-hidden`}
     >
-      {isMinimized ? (
-        <div className="flex items-center gap-2">
-          <Music2 className="text-sky-500" size={20} />
+      <div className="p-4">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <Music2 className="text-sky-500" size={20} />
+            <span className="font-semibold text-gray-800 dark:text-gray-100 text-sm truncate">
+              {playlist[currentIndex].title}
+            </span>
+          </div>
+
           <button
-            onClick={togglePlay}
+            onClick={(e) => {
+              e.stopPropagation();
+              togglePlay();
+            }}
             className="text-gray-700 dark:text-gray-300 hover:text-sky-500 transition-all"
             aria-label="Play or Pause"
           >
-            {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+            <AnimatePresence mode="wait" initial={false}>
+              {isPlaying ? (
+                <motion.div
+                  key="pause"
+                  initial={{ opacity: 0, scale: 0.7 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.7 }}
+                >
+                  <Pause size={22} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="play"
+                  initial={{ opacity: 0, scale: 0.7 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.7 }}
+                >
+                  <Play size={22} />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </button>
         </div>
-      ) : (
-        <div className="p-4 w-full">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <Music2 className="text-sky-500" size={20} />
-              <span className="font-semibold text-gray-800 dark:text-gray-100 text-sm">
-                {playlist[currentIndex].title}
-              </span>
-            </div>
 
-            <button
-              onClick={togglePlay}
-              className="text-gray-700 dark:text-gray-300 hover:text-sky-500 transition-all"
-              aria-label="Play or Pause"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                {isPlaying ? (
-                  <motion.div
-                    key="pause"
-                    initial={{ opacity: 0, scale: 0.7 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.7 }}
-                  >
-                    <Pause size={22} />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="play"
-                    initial={{ opacity: 0, scale: 0.7 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.7 }}
-                  >
-                    <Play size={22} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </button>
-          </div>
-
+        {!isMinimized && (
           <ul className="space-y-1 max-h-32 overflow-y-auto text-sm">
             {playlist.map((track, i) => (
               <li
                 key={track.src}
-                onClick={() => changeTrack(i)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  changeTrack(i);
+                }}
                 className={`cursor-pointer px-3 py-2 rounded-lg transition-colors ${
                   i === currentIndex
                     ? "bg-sky-100 dark:bg-sky-900 font-medium"
@@ -139,13 +161,13 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
               </li>
             ))}
           </ul>
-        </div>
-      )}
+        )}
 
-      <audio ref={audioRef} loop>
-        <source src={playlist[currentIndex].src} type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
+        <audio ref={audioRef} loop>
+          <source src={playlist[currentIndex].src} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+      </div>
     </motion.div>
   );
 }
