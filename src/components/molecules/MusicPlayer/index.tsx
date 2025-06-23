@@ -4,8 +4,8 @@ import { Play, Pause, Music2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const playlist = [
-  { title: "Cozy Crackle Nights", src: "/assets/music/music1.mp3" },
   { title: "Light Chillhop Beat", src: "/assets/music/music2.mp3" },
+  { title: "Cozy Crackle Nights", src: "/assets/music/music1.mp3" },
   { title: "Ambient Chillhop", src: "/assets/music/music3.mp3" },
 ];
 
@@ -51,7 +51,7 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setIsMinimized(true);
-    }, 10000); // 10s
+    }, 5000); // 10s
   };
 
   const handleMouseEnter = () => {
