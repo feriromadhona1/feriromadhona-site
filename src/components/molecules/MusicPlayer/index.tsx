@@ -19,11 +19,11 @@ interface MusicPlayerProps {
 
 export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMobileDevice, setIsMobileDevice] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setIsMobileDevice(isMobile());
@@ -33,12 +33,19 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
       setIsPlaying(true);
     }
 
-    startMinimizeTimer();
+    if (!isMobile()) startMinimizeTimer();
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, []);
+
+  // Jalankan timer lagi setelah dibesarkan
+  useEffect(() => {
+    if (!isMobileDevice && !isMinimized) {
+      startMinimizeTimer();
+    }
+  }, [isMinimized, isMobileDevice]);
 
   const startMinimizeTimer = () => {
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -68,21 +75,25 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
 
   const handleMouseEnter = () => {
     if (!isMobileDevice) {
-      setIsMinimized(false);
       if (timerRef.current) clearTimeout(timerRef.current);
+      setIsMinimized(false);
     }
+    startMinimizeTimer();
   };
 
   const handleMouseLeave = () => {
     if (!isMobileDevice) {
       startMinimizeTimer();
     }
+    startMinimizeTimer();
   };
 
   const handleMobileToggle = () => {
     if (isMobileDevice) {
       setIsMinimized((prev) => !prev);
     }
+    startMinimizeTimer();
+
   };
 
   return (
@@ -109,7 +120,6 @@ export default function MusicPlayer({ autoPlay = false }: MusicPlayerProps) {
               {playlist[currentIndex].title}
             </span>
           </div>
-
           <button
             onClick={(e) => {
               e.stopPropagation();
