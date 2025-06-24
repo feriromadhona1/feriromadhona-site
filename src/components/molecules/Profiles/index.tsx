@@ -106,7 +106,7 @@ export default function Home() {
         >
         <div className="w-[200px] h-[200px] mx-auto rounded-full overflow-hidden shadow-md">
             <Image
-            src={`/assets/images/feri-romadhona.jpg`}
+            src={`/assets/images/feri2.jpeg`}
             alt="Feri Romadhona"
             width={200}
             height={200}
